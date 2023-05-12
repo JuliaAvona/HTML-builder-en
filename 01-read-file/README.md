@@ -1,66 +1,65 @@
-## Чтение файла с выводом содержимого в консоль
+## Read file with console output
 
-В файле **index.js** директории **01-read-file** напишите скрипт выводящий в консоль содержимое файла **text.txt**. 
+In the **index.js** file of the **01-read-file** directory, write a script that displays the contents of the **text.txt** file.
 
-### Общие правила:
+### General rules:
 
-- Запрещается использование любых сторонних модулей
-- Каждое из заданий должно запускаться командой node <имя папки задания> выполненной в корневой директории
-- Запрещается использование синхронных функций модуля fs такие как ```fs.statSync(path[, options])```, 
-```fs.readFileSync(path[, options])``` и другие находящиеся в разделе [synchronous API](https://nodejs.org/api/fs.html#fs_synchronous_api)
+- It is forbidden to use any external modules
+- Random jobs should be run with node <folder name> executed in the root directory
+- It is forbidden to use synchronous functions of the fs module, such as ```fs.statSync(path[, options])```,
+```fs.readFileSync(path[, options])``` and others found in [synchronous API](https://nodejs.org/api/fs.html#fs_synchronous_api)
 
-### Требования
+### Requirements
 
-- [ ] Внутри папки ***01-read-file*** находятся 2 файла **index.js** и **text.txt**
-- [ ] При выполнении команды ```node 01-read-file``` в корневом каталоге репозитория в консоль выводится содержимое файла **text.txt**.
-- [ ] В коде не должны быть использованы синхронные методы чтения файла.
-- [ ] Чтение файла должно происходить с помощью **ReadStream**.
-
-
-### Цели задания
-- Познакомиться с основами работы с файловой системой на платформе Node.Js
-- Изучить основы streams и events
-- Ознакомиться с модулем Path и научиться применять его для построения абсолютного пути к файлам.  
-
-### Описание  
-В данном задании от вас требуется написать небольшой скрипт, результатом работы которого будет вывод содержимого заранее подготовленного текстового файла в консоль. Для этого вы можете придерживаться данного порядка действий:  
-
-1. Импортировать необходимые для выполнения задания модули:
-- Для взаимодействия с файловой системой в NodeJs используется модуль fs, документацию которого можно найти по этой [ссылке](https://nodejs.org/api/fs.html#fs_file_system)(перевод на русский приложен в разделе "Полезные ссылки"). 
-- Для корректного указания пути к файлу вам понадобится модуль [Path](https://nodejs.org/api/path.html#path_path_join_paths). 
-2. Создать новый **ReadStream** из файла **text.txt**. 
-3. Направить поток чтения в стандартный поток вывода.  
-
-### Советы
-Для импорта в Node.js используйте [CommonJS modules](https://nodejs.org/docs/latest/api/modules.html#modules_modules_commonjs_modules). Несмотря на то, что в настоящее время Node.js уже имеет почти полную поддержку **ECMAScript modules**(import/export), данный подход ещё не полностью стабилен и подавляющее большинство кода с которым вы столкнётесь будет написано с помощью **CommonJS**.  
-Прим: ```const fs = require('fs');```  
-
-Для считывания файла вы будете использовать потоки ([streams](https://nodejs.org/api/stream.html#stream_readable_streams)), которые являются важной и полезной частью платформы. Благодаря им, вы можете налету обрабатывать огромные количества данных по чанку за раз, при этом расходуя минимальное количество ресурсов, вместо того, чтобы выгружать их в память целиком. В дальнейшем вы не раз столкнётесь с ними в своей работе.
-Так же, важным моментом будет ознакомление с ещё одной базовой концепцией платформы Node.js, а именно **Events**(события). Node.js использует события почти повсеместно, а большинство объектов являются наследниками класса **EventEmitter**. Для более полного понимания работы потоков при изучении рекомендую сначала ознакомиться именно с событиями, так как каждый поток является наследником **EventEmitter**.
-Материалы по данным темам так же приложены в разделе "Полезные ссылки".
+- [ ] Inside the folder ***01-read-file*** there are 2 files **index.js** and **text.txt**
+- [ ] When executing the ``node 01-read-file``` command in the root directory of the repository, the contents of the **text.txt** file are displayed in the console.
+- [ ] Synchronous file reading methods should not be used in the code.
+- [ ] Reading a file must be efficient with **ReadStream**.
 
 
-При создании **ReadStream** обратите внимание на то, что команда запуска вашего кода должна выполняться в корневой директории репозитория, а следовательно важно правильно передать путь к файлу для чтения. Node.js, в случае передачи относительного пути к файлу вроде ```./text.txt``` будет искать его относительно директории в которой был запущен процесс. Функция **join** из модуля [Path](https://nodejs.org/api/path.html#path_path_join_paths) позволяет создать полный путь к текстовому файлу основываясь на переменной  [__dirname](https://js-node.ru/site/article?id=24#globals_dirname) хранящей путь к каталогу, где находится файл вашего скрипта. Таким образом директория из которой вы запускаете код не повлияет на место поиска нужного файла и вы всегда будете ссылаться на **text.txt** лежащий рядом с **index.js**. Так же модуль [Path](https://node.js.org/api/path.html#path_path_join_paths) содержит другие полезные функции для манипуляций с путями, а потому настоятельно рекомендую изучить его возможности.
+### Task objectives
+- Get acquainted with the basics of working with the file system on the Node.Js platform
+- Explore major streams and events
+- Familiarize yourself with the Path module and use it to build an absolute path to a file.
 
-У вас будет несколько вариантов для того, чтобы направить ваш поток чтения в поток стандартного вывода(то есть консоль. Больше о стандартных потоках можно узнать [тут](https://ru.wikipedia.org/wiki%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B8)), 
-Вы можете использовать как высокоуровневый [console.log()](https://nodejs.org/api/console.html#console_console_log_data_args), так и работать напрямую с потоком вывода [process.stdout](https://nodejs.org/api/process.html#process_process_stdout).  
+### Description
+The pre-assignment requires you to write a small script that is expected to output a preloaded text file to the console. To do this, you can follow this procedure:
+
+1. Import the modules necessary to complete the task:
+- To interact with the file system in NodeJs, the fs module is used, the documentation of which can be found at this [link] (https://nodejs.org/api/fs.html#fs_file_system) (Russian translation is attached in the "Useful links" section) .
+- You will need the [Path](https://nodejs.org/api/path.html#path_path_join_paths) module to correctly specify the path to the file.
+2. Create a new **ReadStream** from the **text.txt** file.
+3. Set the read stream to standard output.
+
+### Adviсe
+To import into Node.js, tag [CommonJS modules](https://nodejs.org/docs/latest/api/modules.html#modules_modules_commonjs_modules). Even though Node.js currently has almost complete support for **ECMAScript** modules (import/export), this approach is not yet completely stable and the vast majority of object code you will encounter will be written with * *CommonJS* *.
+Note: ```const fs = require('fs');```
+
+To read a file, you use streams ([streams](https://nodejs.org/api/stream.html#stream_readable_streams)) which are an efficient and useful part of the platform. Thanks to them, you can increase the amount of a large amount of data in parts at times, while consuming a significant amount of resources, instead of increasing their memory in the flora. In the future, you will encounter them more than once in your work.
+It will also be important to get acquainted with another basic concept of the Node.js platform, namely **Events** (events). Node.js uses almost existing events, and the remaining objects are inherited from the **EventEmitter** class. For a more complete disclosure of the thread, it is recommended that you first familiarize yourself with the events, since each thread inherits **EventEmitter**.
+Materials on these topics are also added to the "Useful Links" section.
 
 
-##### Полезные ссылки
-*Обратите внимание, что переводы документации на русский язык могут быть устаревшими и не содержать всех современных возможностей модулей. Однако, основные концепции описанные там работают и по сей день. Для получения актуальной информации всегда используйте официальную документацию!*
-- События:  
-    - [Understanding Node.js Event-Driven Architecture (FreeCodeCamp)](https://www.freecodecamp.org/news/understanding-node-js-event-driven-architecture-223292fcbc2d/)
-    - [Event emitter (nodejsdev.ru)](https://nodejsdev.ru/doc/event-emitter/)  
-    - [Перевод документации Events (nodejsdev.ru)](https://nodejsdev.ru/api/events/)  
-    - [События гайд (nodejsdev.ru)](https://nodejsdev.ru/guide/events/) 
-- Потоки:
-    - [Stream](https://nodejs.org/api/stream.html)  
-    - [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options)
-    - [Потоки (nodejsdev.ru)](https://nodejsdev.ru/api/stream/)
-    - [Pipe (nodejsdev.ru)](https://nodejsdev.ru/guide/pipe/)
-- Модуль Path:
-    - [Path](https://nodejs.org/api/path.html)   
-    - [Path перевод на русский](https://nodejsdev.ru/api/path/)
-- Process: 
-    - [Process](https://nodejs.org/api/process.html)
-    - [Process перевод на русский](https://nodejsdev.ru/api/process/)
+When creating a **ReadStream**, please note that your product startup command must be executed in the root directory of the repository, and therefore it is important to correctly pass the path to the file for reading. Node.js, in the case of passing a relative path to a file like ```./text.txt```, will look for its relative directories in which the process was launched. The **join** function from the [Path](https://nodejs.org/api/path.html#path_path_join_paths) module allows you to create a full path to a text file that is easily found by [__dirname](https://js-node .ru/site/article?id=24#globals_dirname) containing the path to the directory where your script file is located. So the directory you're running the code from doesn't point to where to find the file you're looking for, and you always create a source on **text.txt** next to **index.js**. Also, the [Path](https://node.js.org/api/path.html#path_path_join_paths) module contains other useful functions for managing paths, and therefore it is recommended to use its capabilities.
+
+You can learn more about the flow of threads [here] D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D1%82% D0%BE%D0%BA%D0%B8)),
+You can either use the high-level [console.log()](https://nodejs.org/api/console.html#console_console_log_data_args) or work directly with the output stream [process.stdout](https://nodejs.org /api/process.html#process_process_stdout).
+
+##### Useful links
+*Please note that translations of the documentation into Russian may be outdated and may not contain all the modern features of the modules. However, the basic concepts described there still work today. Always refer to the official documentation for up-to-date information!*
+- Events:
+     - [Understanding Node.js Event-Driven Architecture (FreeCodeCamp)](https://www.freecodecamp.org/news/understanding-node-js-event-driven-architecture-223292fcbc2d/)
+     - [Event emitter (nodejsdev.ru)](https://nodejsdev.ru/doc/event-emitter/)
+     - [Translation of documentation Events (nodejsdev.ru)](https://nodejsdev.ru/api/events/)
+     - [Events guide (nodejsdev.ru)](https://nodejsdev.ru/guide/events/)
+- Streams:
+     - [Stream](https://nodejs.org/api/stream.html)
+     - [fs.createReadStream](https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options)
+     - [Streams (nodejsdev.ru)](https://nodejsdev.ru/api/stream/)
+     - [Pipe (nodejsdev.ru)](https://nodejsdev.ru/guide/pipe/)
+- Path module:
+     - [Path](https://nodejs.org/api/path.html)
+     - [Path translation into Russian](https://nodejsdev.ru/api/path/)
+- Process:
+     - [Process](https://nodejs.org/api/process.html)
+     - [Process translation into Russian] (https://nodejsdev.ru/api/process/)
