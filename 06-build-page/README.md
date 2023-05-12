@@ -1,45 +1,45 @@
-## Сборка HTML страницы из компонентов и стилей
+## Assembling an HTML page from components and styles
 
-В файле **index.js** директории **06-build-page** напишите скрипт который:
-1. Создаёт папку  **project-dist**.
-2. Заменяет шаблонные теги в файле **template.html** с названиями файлов из папки components (пример:```{{section}}```) на содержимое одноимённых компонентов и  сохраняет результат в **project-dist/index.html**.
-3. Собирает в единый файл стили из папки **styles** и помещает их в файл **project-dist/style.css**.
-4. Копирует папку **assets** в **project-dist/assets**
+In the **index.js** file of the **06-build-page** directory, write a script that:
+1. Creates a folder **project-dist**.
+2. Replaces template tags in the **template.html** file with file names from the components folder (example:```{section}}```) with the content of the components of the same name and saves the result in **project-dist/index .html**.
+3. Collects the styles from the **styles** folder into a single file and places them in the **project-dist/style.css** file.
+4. Copies the **assets** folder to **project-dist/assets**
 
 
-### Общие правила:
+### General rules:
 
-- Запрещается использование любых сторонних модулей
-- Каждое из заданий должно запускаться командой node <имя папки задания> выполненной в корневой директории
-- Запрещается использование синхронных функций модуля fs такие, как ```fs.statSync(path[, options])```, 
-```fs.readFileSync(path[, options])``` и другие находящиеся в разделе [synchronous API](https://nodejs.org/api/fs.html#fs_synchronous_api)
+- It is forbidden to use any third-party modules
+- Each of the jobs must be run with the command node <job folder name> executed in the root directory
+- It is forbidden to use fs module synchronous functions such as ```fs.statSync(path[, options])```,
+```fs.readFileSync(path[, options])``` and others under [synchronous API](https://nodejs.org/api/fs.html#fs_synchronous_api)
 
-### Требования
-- [ ] После завершения работы скрипта должна быть создана папка **project-dist**
-- [ ] В папке **project-dist** должны находиться файлы **index.html** и **style.css** 
-- [ ] В папке **project-dist** должна находиться папка **assets** являющаяся точной копией папки **assets** находящейся в **06-build-page**
-- [ ] Запрещается использование fsPromises.cp()
-- [ ] Файл **index.html** должен содержать разметку являющуюся результатом замены шаблонных тегов в файле **template.html**
-- [ ] Файл **style.css** должен содержать стили собранные из файлов папки **styles** 
-- [ ] При добавлении компонента в папку и соответствующего тега в исходный файл **template.html** повторное выполнение скрипта приведёт файл **index.html** в папке **project-dist** в актуальное состояние перезаписав его. Файл **style.css** и папка **assets** так же должны поддерживать актуальное состояние 
-- [ ] При записи двух и более шаблонных тегов подряд в файле **template.html**, разделенных между собой только пробелами **без переноса строки**, не должно возникать ошибок выполнения кода. Например, `{{about}} {{articles}}` должно расцениваться как 2 отдельных компонента
-- [ ] Исходный файл **template.html** не должен быть изменён в ходе выполнения скрипта
-- [ ] Запись в шаблон содержимого любых файлов кроме файлов с расширением **.html** является ошибкой  
-### Цели задания
+### Requirements
+- [ ] After the script ends, the **project-dist** folder should be created
+- [ ] **project-dist** folder should contain **index.html** and **style.css** files
+- [ ] The **project-dist** folder should contain an **assets** folder which is an exact copy of the **assets** folder found in **06-build-page**
+- [ ] Do not use fsPromises.cp()
+- [ ] The **index.html** file must contain the markup resulting from replacing the template tags in the **template.html** file
+- [ ] The **style.css** file must contain styles collected from the files of the **styles** folder
+- [ ] When adding a component to the folder and the corresponding tag to the **template.html** source file, re-executing the script will bring the **index.html** file in the **project-dist** folder up to date by overwriting it. The **style.css** file and **assets** folder must also be kept up to date
+- [ ] When writing two or more template tags in a row in the **template.html** file, separated by spaces only **without line breaks**, no code execution errors should occur. For example, `{{about}} {{articles}}` should be treated as 2 separate components
+- [ ] The source file **template.html** must not be changed during script execution
+- [ ] It is an error to write any files except files with **.html** extension to the template
+### Task objectives
 
-- Создание небольшой утилиты позволяющей собрать статичную HTML страницу. 
-- Закрепление полученных знаний
+- Creation of a small utility that allows you to assemble a static HTML page.
+- Consolidation of acquired knowledge
 
-### Описание
+### Description
 
-Один из возможных порядков выполнения задачи:
+One of the possible order of task execution:
 
-1. Импорт всех требуемых модулей
-2. Прочтение и сохранение в переменной файла-шаблона
-3. Нахождение всех имён тегов в файле шаблона
-4. Замена шаблонных тегов содержимым файлов-компонентов
-5. Запись изменённого шаблона в файл **index.html** в папке **project-dist**
-6. Использовать скрипт написанный в задании **05-merge-styles** для создания файла **style.css**
-7. Использовать скрипт из задания **04-copy-directory** для переноса папки **assets** в папку project-dist 
+1. Import all required modules
+2. Reading and saving in a template file variable
+3. Finding all tag names in a template file
+4. Replacing template tags with the contents of component files
+5. Writing the modified template to the **index.html** file in the **project-dist** folder
+6. Use the script written in the **05-merge-styles** task to create the **style.css** file
+7. Use the script from the **04-copy-directory** task to move the **assets** folder to the project-dist folder
 
-Обратите внимание, что данный алгоритм вы можете оптимизировать и изменять по своему усмотрению. 
+Please note that you can optimize and change this algorithm at your discretion.
