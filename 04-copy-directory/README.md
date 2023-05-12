@@ -1,39 +1,38 @@
-## Копирование папки
+## Copy folder
 
-В файле **index.js** директории **04-copy-directory** реализуйте функцию **copyDir** которая копирует содержимое папки **files** в папку **files-copy**.
+In the **index.js** file of the **04-copy-directory** directory, implement the **copyDir** function that copies the contents of the **files** folder to the **files-copy** folder.
 
-### Общие правила:
+### General rules:
 
-- Запрещается использование любых сторонних модулей
-- Каждое из заданий должно запускаться командой node <имя папки задания> выполненной в корневой директории
-- Запрещается использование синхронных функций модуля fs такие, как ```fs.statSync(path[, options])```, 
-```fs.readFileSync(path[, options])``` и другие находящиеся в разделе [synchronous API](https://nodejs.org/api/fs.html#fs_synchronous_api)
+- It is forbidden to use any third-party modules
+- Each of the jobs must be run with the command node <job folder name> executed in the root directory
+- It is forbidden to use fs module synchronous functions such as ```fs.statSync(path[, options])```,
+```fs.readFileSync(path[, options])``` and others under [synchronous API](https://nodejs.org/api/fs.html#fs_synchronous_api)
 
 
-### Требования
-- [ ] После завершения работы функции создаётся папка **files-copy** содержимое которой является точной копией исходной папки **files**.
-- [ ] При добавлении/удалении/изменении файлов в папке **files** и повторном запуске ```node 04-copy-directory``` содержимое папки **files-copy** актуализируется.
-- [ ] Запрещается использование fsPromises.cp()
+### Requirements
+- [ ] After the function ends, the **files-copy** folder is created, the contents of which are an exact copy of the original **files** folder.
+- [ ] When adding/removing/changing files in the **files** folder and restarting ```node 04-copy-directory```, the contents of the **files-copy** folder are updated.
+- [ ] Do not use fsPromises.cp()
 
-### Цели задания
+### Task objectives
 
-- Научиться копировать файлы и директории.
+- Learn to copy files and directories.
 
-### Описание  
+### Description
 
-Порядок действий для выполнения задачи:
+The procedure for completing the task:
 
-1. Импорт всех требуемых модулей
-2. Создание папки **files-copy** в случае если она ещё не существует
-3. Чтение содержимого папки **files**
-4. Копирование файлов из папки **files** в папку **files-copy**
+1. Import all required modules
+2. Create folder **files-copy** if it doesn't exist yet
+3. Reading the contents of the **files** folder
+4. Copying files from the **files** folder to the **files-copy** folder
 
-### Советы
+### Adviсe
 
-Обратите внимание на опцию ```recursive``` которую можно передать в ```fsPromises/mkdir```. С её помощью вы можете избежать ошибок в случаях когда директория уже создана. 
+Note the ```recursive``` option that can be passed to ```fsPromises/mkdir```. With it, you can avoid errors in cases where the directory has already been created.
 
-##### Полезные ссылки
+##### Useful links
 
-- [copyFile](https://nodejs.org/api/fs.html#fs_fspromises_copyfile_src_dest_mode)  
+- [copyFile](https://nodejs.org/api/fs.html#fs_fspromises_copyfile_src_dest_mode)
 - [mkdir](https://nodejs.org/api/fs.html#fs_fspromises_mkdir_path_options)
-
