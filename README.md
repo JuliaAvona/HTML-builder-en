@@ -32,9 +32,9 @@ The verification progress is described in the repository wiki. After starting cr
 - Execution and verification of the task must be carried out on node LTS version .
 
 ## Table of contents
-[01 Reading a file with output to the console](https://github.com/EvgeniiMal/HTML-builder/tree/main/01-read-file)
-[02 Write console input to file](https://github.com/EvgeniiMal/HTML-builder/blob/main/02-write-file)
-[03 Displaying information about files stored in a folder](https://github.com/EvgeniiMal/HTML-builder/blob/main/03-files-in-folder)
-[04 Folder Copy](https://github.com/EvgeniiMal/HTML-builder/tree/main/04-copy-directory)
-[05 Build css bundle](https://github.com/EvgeniiMal/HTML-builder/blob/main/05-merge-styles)
-[06 Building an HTML page from components and styles](https://github.com/EvgeniiMal/HTML-builder/tree/main/06-build-page)
+[01 Reading a file with output to the console](https://github.com/EvgeniiMal/HTML-builder/tree/main/01-read-file)  
+[02 Write console input to file](https://github.com/EvgeniiMal/HTML-builder/blob/main/02-write-file)  
+[03 Displaying information about files stored in a folder](https://github.com/EvgeniiMal/HTML-builder/blob/main/03-files-in-folder)  
+[04 Folder Copy](https://github.com/EvgeniiMal/HTML-builder/tree/main/04-copy-directory)  
+[05 Build css bundle](https://github.com/EvgeniiMal/HTML-builder/blob/main/05-merge-styles)  
+[06 Building an HTML page from components and styles](https://github.com/EvgeniiMal/HTML-builder/tree/main/06-build-page)  
