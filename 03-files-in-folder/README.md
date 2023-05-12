@@ -1,43 +1,43 @@
-## Вывод информации о файлаx хранящихся в папке
+## Display information about files stored in a folder
 
-В файле **index.js** директории **03-files-in-folder** напишите скрипт выводящий в консоль данные о файлах содержащихся в папке **secret-folder**.
+In the **index.js** file of the **03-files-in-folder** directory, write a script that outputs data about the files contained in the **secret-folder** folder to the console.
 
-### Требования
+### Requirements
 
-- [ ] При выполнении команды ```node 03-files-in-folder``` в корневом каталоге репозитория в консоль выводится информация о файлах содержащихся непосредственно внутри ***03-files-in-folder/secret-folder***. Данные должны быть выведены в формате <имя файла>-<расширение файла>-<вес файла>. Пример: ```example - txt - 128.369kb``` (округлять не нужно, конвертация в кб по желанию!)
-- [ ] Информация должна выводиться только для файлов содержащихся в ***03-files-in-folder/secret-folder***. Наличие информации о директориях считается ошибкой.
+- [ ] When executing the command ```node 03-files-in-folder``` in the root directory of the repository, information about the files contained directly inside ***03-files-in-folder/secret-folder*** is displayed in the console . The data should be output in the format <file name>-<file extension>-<file weight>. Example: ```example - txt - 128.369kb``` (no need to round, convert to kb optional!)
+- [ ] Information should be displayed only for files contained in ***03-files-in-folder/secret-folder***. The presence of information about directories is considered an error.
 
 
-### Цели задания
+### Task objectives
 
-- Научиться получать информацию о файлах.  
+- Learn to get information about files.
 
-### Описание
+### Description
 
-Порядок действий для выполнения задачи:
+The procedure for completing the task:
 
-1. Импорт всех требуемых модулей
-2. Чтение содержимого папки secret-folder
-3. Получение данных о каждом объекте который содержит папка secret-folder
-4. Проверка объекта на то, что он является файлом
-5. Вывод данных о файле в консоль
+1. Import all required modules
+2. Reading the contents of the secret-folder
+3. Getting data about each object that contains the secret-folder
+4. Checking if an object is a file
+5. Outputting file data to the console
 
-### Советы
+### Adviсe
 
-Ознакомьтесь с [данной статьёй](https://www.freecodecamp.org/news/what-is-gitkeep/) для того, чтобы восполнить возможные пробелы в понимании работы git и избавиться от вопроса о чтении файлов в подпапках.
+Check out [this article](https://www.freecodecamp.org/news/what-is-gitkeep/) to fill in any gaps in your understanding of how git works and get rid of the question of reading files in subfolders.
 
-Для того, чтобы прочесть содержимое папки, используйте функцию ```readdir``` из модуля "fs/promises"([ссылка на документацию](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html#fs_fspromises_readdir_path_options)). Данная функция позволит вам получить имена всех файлов находящихся в заданной директории.
+To read the contents of a folder, use the ```readdir``` function from the module "fs/promises"([link to documentation](https://nodejs.org/dist/latest-v16.x/docs/api /fs.html#fs_fspromises_readdir_path_options)). This function will allow you to get the names of all files in a given directory.
 
-После прочтения содержимого папки, в случае если вы установите опцию ```{withFileTypes: true}```, каждый объект содержащийся в ней будет представлен в виде инстанса класса [Dirent](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html#fs_class_fs_dirent). Его методы позволят вам узнать, является ли объект файлом.
+After reading the contents of the folder, if you set the ```{withFileTypes: true}``` option, each object contained in it will be represented as an instance of the [Dirent] class (https://nodejs.org/dist/latest- v16.x/docs/api/fs.html#fs_class_fs_dirent). Its methods will let you know if an object is a file.
 
-Для определения расширения файла вы можете использовать метод ```extname``` модуля "path". [Документация](https://nodejs.org/api/path.html#path_path_extname_path)
+You can use the ```extname``` method of the "path" module to determine the file extension. [Documentation](https://nodejs.org/api/path.html#path_path_extname_path)
 
-Получить информацию о файле поможет [stat](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html#fs_fs_stat_path_options_callback). 
-Полный перечень данных которые возвращает данная функция вы можете увидеть в документации. Обратите внимание, что возвращаемый данной функцией объект является инстансом класса [Stats](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html#fs_class_fs_stats), который так же имеет методы позволяющие проверить является ли объект файлом.
+[stat](https://nodejs.org/dist/latest-v16.x/docs/api/fs.html#fs_fs_stat_path_options_callback) will help you get information about the file.
+You can see the full list of data returned by this function in the documentation. Please note that the object returned by this function is an instance of the [Stats] class (https://nodejs.org/dist/latest-v16.x/docs/api/fs.html#fs_class_fs_stats), which also has methods that allow you to check whether whether the object is a file.
 
-##### Полезные ссылки
-*Обратите внимание, что переводы документации на русский язык могут быть устаревшими и не содержать всех современных возможностей модулей. Однако, основные концепции описанные там работают и по сей день. Для получения актуальной информации всегда используйте официальную документацию!*
+##### Useful links
+*Please note that translations of the documentation into Russian may be outdated and may not contain all the modern features of the modules. However, the basic concepts described there still work today. Always refer to the official documentation for up-to-date information!*
 
-- [stat на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstat)  
-- [readdir на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsreaddir)  
-- [Stats на русском (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstats)  
+- [stat in Russian (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstat)
+- [readdir in Russian (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsreaddir)
+- [Stats in Russian (nodejsdev.ru)](https://nodejsdev.ru/api/fs/#fsstats)
